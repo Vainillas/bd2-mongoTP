@@ -23,7 +23,7 @@ public class PostServiceImpl extends MongoService implements PostService {
             Document sort = new Document("date", -1);
             return collection.find().projection(fields(include("_id", "title", "resume"))).sort(sort).limit(4).map(document ->
                             Post.builder()
-                                    .id(String.valueOf(document.getObjectId("_id")))
+                                    .id(document.getObjectId("_id"))
                                     .title(document.getString("title"))
                                     .resume(document.getString("resume"))
                                     .build())

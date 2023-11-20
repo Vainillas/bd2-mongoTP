@@ -1,6 +1,7 @@
 package mongoblogspringboot.mongoblogspringboot.model;
 
 import lombok.*;
+import org.bson.types.ObjectId;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -11,7 +12,7 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 public class Post {
-    private String id;
+    private ObjectId id;
     private String title;
     private String author;
     private String text;
