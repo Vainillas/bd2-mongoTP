@@ -12,9 +12,9 @@ public interface PostService {
 
     List<Post> searchPosts(String text);
 
-    AuthorPostCount getPostCounts();
+    List<AuthorPostCount> getPostCounts();
 
-    Post findPost(String id);
+    List<Post> findPost(String id);
 
     Post insertPost(Post post);
 }

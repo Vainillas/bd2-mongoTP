@@ -17,25 +17,25 @@ public class PostController {
     public PostController(PostService postService) {
         this.postService = postService;
     }
-    @GetMapping("/posts/latest")
+    @GetMapping("/latest")
     public List<Post> getLatest4Posts() {
         // Implementa la lógica para recuperar los últimos 4 posts ordenados por fecha
         return this.postService.getLatest4Posts();
     }
-    @GetMapping("/posts/{id}")
-    public Post getPostById(@PathVariable String id) {
+    @GetMapping("/{id}")
+    public List<Post> getPostById(@PathVariable String id) {
         // Implementa la lógica para recuperar un post por su ID
         return this.postService.findPost(id);
     }
 
 
-    @GetMapping("/posts/author/{nombreautor}")
+    @GetMapping("/author/{nombreautor}")
     public List<Post> getPostsByAuthor(@PathVariable String nombreautor) {
         // Implementa la lógica para obtener todos los posts para un autor dado su nombre
         return this.postService.getPostsByAuthor(nombreautor);
     }
     @GetMapping("/byauthor")
-    public AuthorPostCount getPostCountByAuthor() {
+    public List<AuthorPostCount> getPostCountByAuthor() {
         // Implementa la lógica para obtener todos los posts para un autor dado su nombre
         return this.postService.getPostCounts();
     }
