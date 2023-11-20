@@ -3,15 +3,13 @@ package mongoblogspringboot.mongoblogspringboot.controllers;
 import mongoblogspringboot.mongoblogspringboot.api.PostService;
 import mongoblogspringboot.mongoblogspringboot.dto.AuthorPostCount;
 import mongoblogspringboot.mongoblogspringboot.model.Post;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("posts")
+@RequestMapping("/posts")
+@CrossOrigin(origins = "*")
 public class PostController {
     private PostService postService;
     public PostController(PostService postService) {

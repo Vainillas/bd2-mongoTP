@@ -10,7 +10,8 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("pages")
+@RequestMapping("/pages")
+@CrossOrigin(origins = "*")
 public class PagesController {
 
     private PageService pageService ;
@@ -19,7 +20,7 @@ public class PagesController {
         this.pageService = pageService;
     }
 
-    @GetMapping("/pages/{id}")
+    @GetMapping("/{id}")
     @Operation(summary = "Recupera una pagina en base a su id")
     public List<Page> getPageById(@PathVariable String id) {
         // Implementa la lógica para recuperar una página por su ID

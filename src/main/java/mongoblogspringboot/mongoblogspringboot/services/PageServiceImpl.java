@@ -12,6 +12,9 @@ import mongoblogspringboot.mongoblogspringboot.exceptions.BusinessException;
 import org.bson.Document;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -20,7 +23,15 @@ public class PageServiceImpl extends MongoService implements PageService {
     public List<Page> findById(String id){
         return executeOperation(collection -> {
             Document query = new Document("_id", id);
-            return collection.find(query, Page.class).into(List.of());
+            return collection.find(query).map(
+                    page -> Page.builder()
+                            .id(page.getObjectId("_id"))
+                            .title(page.getString("title"))
+                            .author(page.getString("author"))
+                            .text(page.getString("text"))
+                            .date(LocalDate.parse(page.getString("date"), DateTimeFormatter.ofPattern("yyyy-MM-dd")))
+                            .build()
+            ).into(new ArrayList<>());
         });
     }
 
